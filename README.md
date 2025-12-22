@@ -22,7 +22,7 @@ Welcome to my personal journey transitioning from a **Software Engineer** to an 
 ### Model Performance: Convergence Check
 We used Gradient Descent to optimize the parameters. The graph below shows the cost function ($J(\theta)$) decreasing over iterations, confirming that the learning rate was tuned correctly.
 
-![Gradient Descent Loss Curve](./ML_Algorithm/loss_curve.png)
+![Gradient Descent Loss Curve](./ML_Algorithm/classical_ml/loss_curve.png)
 
 *Observation: The loss drops exponentially and stabilizes around iteration 200, indicating convergence.*
 
