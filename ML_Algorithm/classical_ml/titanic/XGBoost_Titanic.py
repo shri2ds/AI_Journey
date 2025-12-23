@@ -22,15 +22,12 @@ df = sns.load_dataset('titanic')
 features = ['pclass', 'sex', 'age', 'fare', 'sibsp', 'survived']
 df = df[features].copy()
 
-# CLEANING:
-# Fill missing Age with Median (Standard practice)
-df['age'] = df['age'].fillna(df['age'].median())
-# Drop rows with other missing vals
-df.dropna(inplace=True)
-
 # ENCODING (The "Translator"):
 # Convert 'sex' (male/female) to 0/1
 df['sex'] = df['sex'].map({'male':0, 'female':1})
+
+# Drop rows with other missing vals
+df.dropna(inplace=True)
 
 # Split X and y
 X = df.drop('survived', axis=1)
@@ -38,6 +35,15 @@ y = df['survived']
 
 # Split Train/Test
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
+
+# Calculate Median ONLY on Train
+train_median_age = X_train['age'].median()
+
+# Note: We use the value from X_train to fill X_test. 
+# We never look at X_test's actual median.
+X_train['age'] = X_train['age'].fillna(train_median_age)
+X_test['age'] = X_test['age'].fillna(train_median_age)
+
 
 # --------------------------
 # 2. Hyperparameter Tuning (GridSearch)
