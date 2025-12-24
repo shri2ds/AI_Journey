@@ -57,3 +57,28 @@ Response should look like below
   "survival_probability": 0.9353424906730652
 }
 ```
+
+> NOTE: Pre-requisites for app containerization: Verify docker is installed and service is up and running on the machine. 
+
+## 🐳 Docker Support 
+Running with Docker ensures the application works exactly the same on your machine as it does in production, regardless of OS or Python version.
+
+
+### 1. Build the Docker Image
+This packages the code, the model, and all dependencies (Linux + Python 3.9) into a portable image.
+```bash
+docker build -t titanic-api .
+```
+
+### 2. Run the Container
+Start the container and map Port 80 of your machine to Port 80 of the container.
+```bash
+docker run -p 80:80 titanic-api
+```
+
+### 3. Verify Deployment
+Once the container is running:
+```bash
+API Docs: Visit http://localhost/docs
+Test Prediction: Use the Swagger UI or curl commands exactly as shown above.
+```
