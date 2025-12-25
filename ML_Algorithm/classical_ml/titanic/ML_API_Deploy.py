@@ -8,7 +8,7 @@ app = FastAPI()
 
 # Load the Model
 model_path = "<absolute_path_to_model>/titanic_xgb_v1.pkl"
-model = joblib.load(model_path)
+model = joblib.load('titanic_xgb_v1.pkl')
 
 # Define the Input Format 
 # Pydantic ensures the user sends the right data types.
