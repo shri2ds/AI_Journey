@@ -2,6 +2,11 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import joblib
 import pandas as pd
+import logging
+
+# Setup Logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 # Initialize the App
 app = FastAPI()
@@ -23,6 +28,9 @@ class Passenger(BaseModel):
 # POST request because we are sending data TO the server
 @app.post("/predict")
 def prediction_survival(passenger: Passenger):
+    # Log the input data
+    logger.info(f"Incoming Request: {passenger}")
+    
     # Convert incoming JSON to Pandas DataFrame
     data = {
         'pclass': [passenger.pclass],
@@ -39,6 +47,9 @@ def prediction_survival(passenger: Passenger):
     # Predict
     prediction = model.predict(df)[0]
     probability = model.predict_proba(df)[0][1]
+
+    # Log the result
+    logger.info(f"Prediction: {prediction}\n Probability: {probability}")
 
     # Return Result
     return {
