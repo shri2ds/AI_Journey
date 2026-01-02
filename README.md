@@ -19,6 +19,7 @@ Bridging the gap between theory and software engineering.
 
 ### 🔹 [Deep_Learning_Computer_Vision](./Deep_Learning_Computer_Vision)
 Advanced work with Unstructured Data (Images/Tensors).
+* **Framework Basics:** Introductory PyTorch implementation on MNIST (Digit Recognition).
 * **Core Internals:** Exploring PyTorch memory layout (Strides), Autograd engine, and Broadcasting mechanics.
 * **Architectures:** Building CNNs (ResNet, YOLO) and Optimization strategies (He Init, Batch Norm).
 
