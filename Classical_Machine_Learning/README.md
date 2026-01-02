@@ -4,6 +4,7 @@ This directory contains two types of work:
 1.  **First Principles Implementation:** Coding algorithms using only `NumPy` to understand the underlying math.
 2.  **MLOps Implementation:** Taking a trained model and wrapping it in a production-grade microservice.
 
+---
 ## 🧠 Algorithms from Scratch
 I re-implemented core algorithms to master the optimization logic.
 
@@ -34,9 +35,16 @@ $$J(\theta) = - \frac{1}{m} \sum_{i=1}^{m} [y^{(i)} \log(\hat{y}^{(i)}) + (1-y^{
 2.  **Maximum Likelihood:** Minimizing this loss is mathematically equivalent to maximizing the likelihood of the observed data.
 3.  **Penalty:** It heavily penalizes "confident but wrong" predictions (e.g., predicting 0.99 probability for a negative class).
 
-## 🚀 Production Project: [Titanic API](./Titanic_API)
-A containerized API that serves real-time predictions.
-* **Model:** XGBoost Classifier.
-* **Serving:** FastAPI (Asynchronous).
-* **Containerization:** Docker (Multi-stage build).
-* **Live Demo:** [https://titanic-api-g2d8.onrender.com/]
+---
+
+## 🚀 Production Project: 🚢 [Titanic API](./Titanic_API)
+**"Deploying to the Real World"**
+A full End-to-End MLOps project that takes a model from a notebook to a cloud-deployed API. A containerized API that serves real-time predictions.
+
+* **Model:** XGBoost Classifier (Gradient Boosting).
+* **Serving:** FastAPI (Asynchronous high-performance framework).
+* **Containerization:** Docker (Multi-stage builds for small images).
+* **Deployment:** Live cloud hosting on [Render](https://titanic-api-g2d8.onrender.com/)
+
+---
+*Goal: To prove competency in both the math of optimization and the software engineering of deployment.*
