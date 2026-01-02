@@ -17,7 +17,7 @@ Bridging the gap between theory and software engineering.
 * **Production Deployment:** A full end-to-end MLOps pipeline for the Titanic Survival model.
     * **Tech Stack:** `XGBoost`, `FastAPI`, `Docker`, `Render`.
 
-### 🔹 [Deep_Learning_Computer_Vision](./Deep_Learning_Computer_Vision)
+### 🔹 [Deep_Learning](./Deep_Learning)
 Advanced work with Unstructured Data (Images/Tensors).
 * **Framework Basics:** Introductory PyTorch implementation on MNIST (Digit Recognition).
 * **Core Internals:** Exploring PyTorch memory layout (Strides), Autograd engine, and Broadcasting mechanics.
