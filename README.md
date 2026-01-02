@@ -1,143 +1,40 @@
-# AI_Journey
+# AI & Machine Learning Engineering Journey 🚀
 
-Welcome to my personal journey transitioning from a **Software Engineer** to an aspiring **AI/ML/Data Scientist**. This repo will be continuously updated with my progress, code, notes, and projects.
+> **From Mathematical Foundations to Production Deployment.**
 
-
----
-
-## 📁 Repository Structure
-```
-📦AI-Journey
-├── LeetCode/              # Python solutions to coding problems
-├── SQL/                   # SQL queries and exercises
-├── ML_Algorithm/           # Implementing ML Algorithm with mathematical foundations
-├── KaggleNotebooks/       # Notebooks explored from Kaggle
-├── Projects/              # Weekly structured projects
-├── Quizzes/               # Periodic self-assessment quizzes
-└── README.md              # This file
-```
-
----
-## Linear Regression
-### Model Performance: Convergence Check
-We used Gradient Descent to optimize the parameters. The graph below shows the cost function ($J(\theta)$) decreasing over iterations, confirming that the learning rate was tuned correctly.
-
-![Gradient Descent Loss Curve](./ML_Algorithm/classical_ml/loss_curve.png)
-
-*Observation: The loss drops exponentially and stabilizes around iteration 200, indicating convergence.*
-
-## Logistic Regression
-### Mathematical Foundation: Binary Cross Entropy (Log Loss)
-For binary classification, we model the target $y$ as a Bernoulli distribution. Instead of Mean Squared Error (MSE), which results in a non-convex loss surface for sigmoid activation, we use **Log Loss**.
-
-**The Cost Function:**
-$$J(\theta) = - \frac{1}{m} \sum_{i=1}^{m} [y^{(i)} \log(\hat{y}^{(i)}) + (1-y^{(i)}) \log(1 - \hat{y}^{(i)})]$$
-
-**Why this works:**
-1.  **Convexity:** It guarantees a global minimum, allowing Gradient Descent to converge.
-2.  **Maximum Likelihood:** Minimizing this loss is mathematically equivalent to maximizing the likelihood of the observed data.
-3.  **Penalty:** It heavily penalizes "confident but wrong" predictions (e.g., predicting 0.99 probability for a negative class).
-
----
-# Hand-Coded Neural Network (MNIST) 🧠
-
-> **Project Goal:** Build a Deep Learning framework from scratch using only **NumPy** to master the mathematics behind Backpropagation, Gradient Descent, and Matrix Calculus.
-
-## 🚀 Overview
-This repository contains a raw implementation of a Multi-Layer Perceptron (MLP) designed to classify handwritten digits from the **MNIST dataset**. 
-
-Unlike standard implementations that rely on high-level frameworks like PyTorch or TensorFlow, this project builds the **computational graph manually**. Every forward pass calculation, activation function derivative, and weight update is mathematically derived and implemented via vectorization.
-
-## 📊 Performance
-* **Accuracy:** ~84.4% (on Test Set)
-* **Training Time:** < 30 seconds (500 Iterations)
-* **Architecture:** 2-Layer MLP (784 Input $\to$ 10 Hidden $\to$ 10 Output)
-
-## 🛠️ Tech Stack & Concepts
-* **Language:** Python
-* **Core Library:** NumPy (Linear Algebra & Matrix Operations)
-* **Data Loading:** Keras (Used *only* to download the dataset)
-* **Key Concepts:** * Matrix Calculus (Chain Rule)
-    * Vectorization (No `for` loops in training)
-    * ReLU & Softmax Activations
-    * Categorical Cross-Entropy Loss
+This repository documents my intensive journey transitioning into AI Engineering. It focuses on three core pillars:
+1.  **Mathematics:** Implementing algorithms (Linear Regression, Backprop) from scratch without libraries.
+2.  **Engineering:** Deploying models using Docker, FastAPI, and Cloud Platforms.
+3.  **Deep Learning:** Building Neural Networks, CNNs, and Transformers using PyTorch.
 
 ---
 
-## 📐 The Architecture & Math
+## 📂 Repository Structure
 
-### 1. Forward Propagation
-The network consists of an input layer, one hidden layer with **ReLU** activation, and an output layer with **Softmax** activation.
+### 🔹 [01. Classical Machine Learning](./01_Classical_Machine_Learning)
+Bridging the gap between theory and software engineering.
+* **Algorithms from Scratch:** Python implementations of Linear/Logistic Regression and Neural Networks to understand the calculus of Gradient Descent.
+* **Production Deployment:** A full end-to-end MLOps pipeline for the Titanic Survival model.
+    * **Tech Stack:** `XGBoost`, `FastAPI`, `Docker`, `Render`.
 
-* **Layer 1 (Hidden):**
-$$Z^{[1]} = W^{[1]} X + b^{[1]}$$
-$$A^{[1]} = \text{ReLU}(Z^{[1]})$$
+### 🔹 [02. Deep Learning & Computer Vision](./02_Deep_Learning_Computer_Vision)
+Advanced work with Unstructured Data (Images/Tensors).
+* **Core Internals:** Exploring PyTorch memory layout (Strides), Autograd engine, and Broadcasting mechanics.
+* **Architectures:** Building CNNs (ResNet, YOLO) and Optimization strategies (He Init, Batch Norm).
 
-* **Layer 2 (Output):**
-$$Z^{[2]} = W^{[2]} A^{[1]} + b^{[2]}$$
-$$A^{[2]} = \text{softmax}(Z^{[2]})$$
-
-### 2. Backward Propagation (The Learning Engine)
-Deriving gradients manually using the Chain Rule to minimize the Cross-Entropy Loss.
-
-* **Output Error:**
-$$dZ^{[2]} = A^{[2]} - Y$$
-
-* **Hidden Layer Error (Reflected):**
-$$dZ^{[1]} = W^{[2]T} dZ^{[2]} \cdot g'(Z^{[1]})$$
-*(Where $g'$ is the derivative of ReLU)*
-
-* **Gradients:**
-$$dW^{[l]} = \frac{1}{m} dZ^{[l]} A^{[l-1]T}$$
-$$db^{[l]} = \frac{1}{m} \sum dZ^{[l]}$$
+### 🔹 [LeetCode DSA](./LeetCode_DSA)
+Daily problem-solving to sharpen algorithmic thinking. Focus on Trees, Graphs, and Dynamic Programming.
 
 ---
 
-## 💻 Code Highlight: Vectorization
-Instead of iterating over 60,000 images, the implementation uses NumPy broadcasting to process the entire batch simultaneously.
-
-```python
-def backward_prop(Z1, A1, Z2, A2, W1, W2, X, Y):
-    m = Y.size
-    one_hot_Y = one_hot(Y)
-    
-    # Layer 2 Gradients
-    dZ2 = A2 - one_hot_Y
-    dW2 = 1/m * np.dot(dZ2, A1.T)  # Matrix Multiplication
-    db2 = 1/m * np.sum(dZ2, axis=1, keepdims=True)
-    
-    # Layer 1 Gradients (The Chain Rule)
-    dZ1 = np.dot(W2.T, dZ2) * deriv_ReLU(Z1) 
-    dW1 = 1/m * np.dot(dZ1, X.T)
-    db1 = 1/m * np.sum(dZ1, axis=1, keepdims=True)
-    
-    return dW1, db1, dW2, db2
-```
+## 🛠️ Tech Stack
+* **Languages:** Python, SQL
+* **Libraries:** PyTorch, NumPy, Pandas, Scikit-Learn
+* **Ops:** Docker, FastAPI, Git, CI/CD
 
 ---
-# PyTorch Implementation (AutoGrad) 🔥
+*Author: Shridhar Bhandar*
 
-> **Project Goal:** Re-implement the MNIST classifier using **PyTorch** to leverage Automatic Differentiation (AutoGrad) and GPU acceleration.
-
-## 🚀 Key Differences from "From Scratch"
-This implementation reduces the code complexity by 90% by abstracting the backward pass.
-
-| Feature | NumPy Implementation | PyTorch Implementation |
-| :--- | :--- | :--- |
-| **Gradients** | Manually derived (Calculus) | `loss.backward()` (AutoGrad) |
-| **Weights** | Dictionary of Arrays | `nn.Linear` Layers |
-| **Device** | CPU Only | CPU / GPU / MPS |
-| **Optimization** | Manual Update Rule | `optim.SGD` / `optim.Adam` |
-
-## 💻 Code Snippet
-The entire training loop is simplified to:
-
-```python
-# The "Magic" Step
-optimizer.zero_grad()   # Clear previous gradients
-loss.backward()         # Calculate gradients automatically
-optimizer.step()        # Update weights
-```
 ---
 ## 🧵 Contact
 For discussions, improvements or collaborations, reach me via [LinkedIn](https://www.linkedin.com/in/shridhar-bhandar/).
