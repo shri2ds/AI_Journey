@@ -18,7 +18,7 @@ I re-implemented core algorithms to master the optimization logic.
 * **Logic:** Binary classification using the Sigmoid Activation function.
 * **Loss Function:** Binary Cross Entropy (Log Loss).
 
-## 🚀 Production Project: Titanic API(./Titanic_API)
+## 🚀 Production Project: [Titanic API](./Titanic_API)
 A containerized API that serves real-time predictions.
 * **Model:** XGBoost Classifier.
 * **Serving:** FastAPI (Asynchronous).
