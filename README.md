@@ -11,13 +11,13 @@ This repository documents my intensive journey transitioning into AI Engineering
 
 ## 📂 Repository Structure
 
-### 🔹 [01. Classical Machine Learning](./01_Classical_Machine_Learning)
+### 🔹 [Classical Machine Learning](./Classical_Machine_Learning)
 Bridging the gap between theory and software engineering.
 * **Algorithms from Scratch:** Python implementations of Linear/Logistic Regression and Neural Networks to understand the calculus of Gradient Descent.
 * **Production Deployment:** A full end-to-end MLOps pipeline for the Titanic Survival model.
     * **Tech Stack:** `XGBoost`, `FastAPI`, `Docker`, `Render`.
 
-### 🔹 [02. Deep Learning & Computer Vision](./02_Deep_Learning_Computer_Vision)
+### 🔹 [Deep_Learning_Computer_Vision](./Deep_Learning_Computer_Vision)
 Advanced work with Unstructured Data (Images/Tensors).
 * **Core Internals:** Exploring PyTorch memory layout (Strides), Autograd engine, and Broadcasting mechanics.
 * **Architectures:** Building CNNs (ResNet, YOLO) and Optimization strategies (He Init, Batch Norm).
