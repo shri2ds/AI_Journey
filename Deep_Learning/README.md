@@ -36,19 +36,19 @@ This module documents my progression from understanding the low-level physics of
 **This project builds a **Production-Grade Image Classifier** on MNIST.**
 **Unlike the naive implementation in `Framework_Basics`, this version implements modern deep learning best practices to achieve **98% accuracy** and stability.**
 
-### 🔧 Key Improvements
+#### 🔧 Key Improvements
    1.  **Batch Normalization:** Added `nn.BatchNorm1d` to stabilize layer inputs and prevent vanishing gradients.
    2.  **Dropout:** Added `nn.Dropout(0.2)` to force redundant feature learning (regularization).
    3.  **Adam Optimizer:** Switched from SGD to Adam (Adaptive Learning Rates) for 5x faster convergence.
    4.  **Mode Switching:** Explicit handling of `model.train()` vs `model.eval()`.
 
-### 🧪 The "Single Image" Stress Test
+#### 🧪 The "Single Image" Stress Test
    I implemented a stress test to demonstrate why `model.eval()` is mandatory for inference.
 
-### The Experiment
+#### The Experiment
    We fed a **single image** (Batch Size = 1) to the model in both modes.
 
-### The Results
+#### The Results
    * **✅ EVAL Mode:**
        * **Behavior:** Uses global moving averages for normalization. Dropout is OFF.
        * **Result:** Correct Prediction (High Confidence).
@@ -57,8 +57,14 @@ This module documents my progression from understanding the low-level physics of
        * **Result:** `ValueError` (Crash) or Garbage Output.
        * **Why:** Batch Norm cannot calculate Standard Deviation on a single value (Division by Zero).
 
-### 📂 Files
+#### 📂 Files
    * `ModrnMNIST.py`: The complete training pipeline with the stress test appended.
+
+### 5. [CNN Mechanics](./CNN_Mechanics)
+**"Beyond the Black Box"**
+* **Goal:** Manually implementing 2D Convolution to understand Feature Extraction.
+* **The Experiment:** Created a manual "Sobel Filter" kernel to detect vertical edges without training.
+* **Key Takeaway:** Proved how `Kernel Size` and `Stride` dictate the output feature map dimensions.
 
 ---
 
