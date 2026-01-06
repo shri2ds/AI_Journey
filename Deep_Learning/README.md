@@ -61,10 +61,18 @@ This module documents my progression from understanding the low-level physics of
    * `ModrnMNIST.py`: The complete training pipeline with the stress test appended.
 
 ### 5. [CNN Mechanics](./CNN_Mechanics)
-**"Beyond the Black Box"**
+**[Beyond the Black Box](./CNN_Mechanics/ManualConv.py)**
 * **Goal:** Manually implementing 2D Convolution to understand Feature Extraction.
 * **The Experiment:** Created a manual "Sobel Filter" kernel to detect vertical edges without training.
 * **Key Takeaway:** Proved how `Kernel Size` and `Stride` dictate the output feature map dimensions.
+
+**[Dissecting a Production Model - RESNET](./CNN_Mechanics/Inspect_RESNET.py)**
+* **Goal:** Understanding Downsampling and preparing for Transfer Learning.
+* **The Concept:** Implemented **Max Pooling** manually to visualize how it reduces spatial dimensions while preserving dominant features.
+* **The Experiment:**
+    * Loaded a pre-trained **ResNet18** (trained on ImageNet).
+    * Inspected the `state_dict` to see the raw learned weights.
+    * **"Chopped the Head":** Programmatically replaced the final 1000-class `fc` layer with a custom 2-class layer, the foundational step for Transfer Learning.
 
 ---
 
