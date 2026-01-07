@@ -73,6 +73,18 @@ This module documents my progression from understanding the low-level physics of
     * Loaded a pre-trained **ResNet18** (trained on ImageNet).
     * Inspected the `state_dict` to see the raw learned weights.
     * **"Chopped the Head":** Programmatically replaced the final 1000-class `fc` layer with a custom 2-class layer, the foundational step for Transfer Learning.
+ 
+### 6. [Transfer Learning](./Transfer_Learning)
+**"Stealing Intelligence from ResNet"**
+* **Goal:** Adapt a pre-trained ResNet18 (trained on 1.4M images) to classify Ants vs. Bees using only ~240 images.
+* **The Experiment:**
+    * **Architecture:** Replaced the 1000-class fully connected head with a 2-class custom head.
+    * **Strategy:** Used a **Two-Stage Training** approach (Freeze Body $\rightarrow$ Train Head $\rightarrow$ Fine-Tune Specific Layers).
+* **Engineering Reality Checks (Crucial Lessons):**
+    * **The Batch Norm Trap:** Discovered that `requires_grad=False` **does not** freeze Batch Normalization statistics. To prevent ruining the pre-trained feature extractors, we must force frozen layers into `eval()` mode (`model.eval()`) even during the training loop.
+    * **Differential Learning Rates:** Used `1e-3` for the new head (to learn fast) and `1e-4` for the fine-tuned body layers (to preserve features).
+    * **SGD over Adam:** Chose **SGD + Momentum** instead of Adam, as it often generalizes better for Computer Vision fine-tuning tasks.
+    * **One-Pass Logic:** Implemented a clean `named_parameters()` loop to handle freezing/unfreezing logic in a single, readable pass.
 
 ---
 
