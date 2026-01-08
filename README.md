@@ -15,7 +15,7 @@ This repository documents my intensive journey transitioning into AI Engineering
 Bridging the gap between theory and software engineering.
 * **Algorithms from Scratch:** Python implementations of Linear/Logistic Regression and Neural Networks to understand the calculus of Gradient Descent.
 * **Production Deployment:** A full end-to-end MLOps pipeline for the Titanic Survival model.
-    * **Tech Stack:** `XGBoost`, `FastAPI`, `Docker`, `Render`.
+    * **Tech Stack:** `XGBoost`, `FastAPI`, `Docker` and `Render`.
 
 ### 🔹 [Deep_Learning](./Deep_Learning)
 **The internals of PyTorch and Modern Architectures.**
