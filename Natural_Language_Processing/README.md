@@ -23,23 +23,7 @@ We are condensing a traditional 30-day curriculum into an intensive 20-day sprin
 * **Day 6:** Recurrent Neural Networks (RNNs) - The loop. 
 * **Day 7:** LSTMs & GRUs (Solving Vanishing Gradients).
 * **Day 8:** Seq2Seq Models (Encoder-Decoder Architecture).
-* **Day 9:** **Project:** 🔮 Next Word Predictor (Shakespeare Bot).
-
-### **Week 3: The Revolution (Transformers)**
-*The "Attention Is All You Need" era.*
-* **Day 10:** The Attention Mechanism (Bahdanau).
-* **Day 11:** The Transformer Architecture (Self-Attention, Multi-Head). 
-* **Day 12:** BERT (Bidirectional Encoder Representations).
-* **Day 13:** GPT (Generative Pre-trained Transformer).
-* **Day 14:** **Project:** 🎭 Sentiment Analysis with BERT.
-
-### **Week 4: The LLM Era (Modern NLP)**
-*Productionizing Large Language Models.*
-* **Day 15:** HuggingFace `transformers` Library.
-* **Day 16:** Fine-Tuning Techniques (LoRA, PEFT).
-* **Day 17:** RAG (Retrieval Augmented Generation) Concepts.
-* **Day 18:** Vector Databases (ChromaDB / Pinecone).
-* **Day 19-20:** **Capstone Project:** 🤖 Chat with PDF (RAG Bot).
+* **Day 9:** Transformer Models.
 
 ---
 
