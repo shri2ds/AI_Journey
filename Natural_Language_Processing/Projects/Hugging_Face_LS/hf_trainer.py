@@ -69,7 +69,7 @@ for epoch in range(3): # HF models converge fast!
         optimizer.step()
     print(f"Epoch {epoch+1} Complete. Loss: {loss.item():.4f}")
 
-
+#    Testing on the sample log
 def test_inference(sample_log):
     inputs = tokenizer(sample_log, return_tensors="pt")
     with torch.no_grad():
@@ -79,3 +79,13 @@ def test_inference(sample_log):
 
 test_inference("LOGIN SUDO DELETE_LOGS LOGOUT")
 
+#   Defining the path 
+save_directory = "./saved_log_sentinel"
+if not os.path.exists(save_directory):
+    os.makedirs(save_directory)
+
+#   Save model & it's config
+model.save_pretrained(save_directory)
+tokenizer.save_pretrained(save_directory)
+
+print(f"✅ Model and Tokenizer successfully saved to {save_directory}")
