@@ -39,9 +39,30 @@ def printTree(root):
     
     return result
 
-if __name__ = "__main__":
+def tree_to_list(root):
+    """Return a level-order list representation of the tree."""
+    if not root:
+        return []
+
+    result = []
+    queue = deque([root])
+    while queue:
+        node = queue.popleft()
+        if node:
+            result.append(node.val)
+            queue.append(node.left)
+            queue.append(node.right)
+        else:
+            result.append(None)
+
+    while result and result[-1] is None:
+        result.pop()
+    return result
+
+
+if __name__ == "__main__":
     # Sample Example
     root = Node(3, Node(9, Node(13)), Node(20, Node(15), Node(7)))
-    print("Original tree:", printTree(root))
+    print("Original tree:", tree_to_list(root))
     inverted = invertTree(root)
-    print("Inverted tree:", printTree(inverted))
+    print("Inverted tree:", tree_to_list(inverted))
