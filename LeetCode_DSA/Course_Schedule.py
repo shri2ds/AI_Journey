@@ -1,6 +1,6 @@
 from typing import List
 
-class Solution:
+class CourseSchedule:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         PreMap = { i:[] for i in range(numCourses)}
         for cor, pre in prerequisites:
@@ -27,7 +27,7 @@ class Solution:
         return True
 
 if __name__ == "__main__":
-    sol = Solution()
+    sol = CourseSchedule()
     
     test_cases = [
         # (numCourses, prerequisites, expected, description)
