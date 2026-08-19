@@ -7,21 +7,22 @@ class Node:
 
 def diameterOfBinaryTree(root):
     """ Returns the diameter of the binary tree """
-    self.diameter = 0 # Initialising the diameter with 0
+    diameter = 0 # Initialising the diameter with 0
 
     # DFS function here returns height of the binary tree
     def dfs(current):
+        nonlocal diameter
         if not current:
             return 0
         
         left = dfs(current.left)
         right = dfs(current.right)
 
-        self.result = max(self.diameter, left + right) # Updating the diameter accordingly
+        diameter = max(diameter, left + right) # Updating the diameter accordingly
         return 1 + max(left, right)
         
-      dfs(root)
-      return self.diameter
+    dfs(root)
+    return diameter
 
 if __name__ == "__main__":
     # Example usage
