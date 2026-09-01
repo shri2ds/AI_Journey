@@ -1,0 +1,22 @@
+# Fine-Tuning Artifacts & Checkpoints
+NLP/Fine_Tuning_LLMs/data/
+NLP/Fine_Tuning_LLMs/checkpoints/
+NLP/Fine_Tuning_LLMs/runs/
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.gguf
+
+# Environment & Credentials
+.env
+wandb/
+
+```eof
+
+---
+
+### Summary of Recommendations:
+1. **Separation of Concerns:** Data preparation (`src/dataset/`), model layers (`src/models/`), and training runners (`src/training/`) are kept independent, allowing you to swap between local execution and Google Colab easily.
+2. **Weekly DSA Isolation:** The `dsa/` directory maps directly to 1D DP, 2D DP, Knapsack, and the multi-stage grid reconstruction problem you encountered in your interview.
+3. **One-Line Initialization:** Use the `mkdir -p` command above to generate all subdirectories immediately.
